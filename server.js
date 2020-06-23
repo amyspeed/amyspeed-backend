@@ -3,6 +3,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
+const NewsAPI = require('newsapi');
+const newsapi = new NewsAPI('9d728f0139044cf3a54a15e546d1851e');
 
 const cors = require('cors');
 
@@ -65,6 +67,26 @@ app.post('/api/email-amy', (req,res) => {
         transporter.close();
     });
 });
+
+
+app.get('/api/covid-19-news', (req, res) => {
+    newsapi.v2.topHeadlines({
+        sources: 'bbc-news,the-verge',
+        q: 'COVID',
+        language: 'en',
+        sortBy: 'publishedAt',
+        pageSize: 6,
+        page: 1
+        })
+        .then(response => {
+            console.log(response);
+            res.json(response);
+        })
+        .catch(err => {
+          console.log(err)
+          res.json(err);
+    });
+})
 
 
 app.use('*', function (req, res) {
