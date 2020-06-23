@@ -1,0 +1,21 @@
+{
+  "name": "amyspeed-backend",
+  "version": "1.0.0",
+  "description": "Server side functions for Portfolio",
+  "main": "config.js",
+  "scripts": {
+    "test": "mocha",
+    "start": "node server.js"
+  },
+  "author": "Amy Speed",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mocha": "^8.0.1",
+    "nodemailer": "^6.4.10"
+  }
+}
