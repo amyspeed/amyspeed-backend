@@ -73,7 +73,6 @@ app.get('/api/covid-19-news', (req, res) => {
     const newsapi = new NewsAPI(NEWSAPI_KEY);
 
     newsapi.v2.topHeadlines({
-        sources: 'bbc-news,the-verge',
         q: 'COVID',
         language: 'en',
         sortBy: 'publishedAt',
