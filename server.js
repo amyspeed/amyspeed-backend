@@ -4,11 +4,10 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
 const NewsAPI = require('newsapi');
-const newsapi = new NewsAPI('9d728f0139044cf3a54a15e546d1851e');
 
 const cors = require('cors');
 
-const { PORT, EMAIL_HOST, EMAIL_USER, EMAIL_PASS, EMAIL_TO } = require('./config');
+const { PORT, EMAIL_HOST, EMAIL_USER, EMAIL_PASS, EMAIL_TO, NEWSAPI_KEY } = require('./config');
 
 const app = express();
 
@@ -70,6 +69,9 @@ app.post('/api/email-amy', (req,res) => {
 
 
 app.get('/api/covid-19-news', (req, res) => {
+
+    const newsapi = new NewsAPI(NEWSAPI_KEY);
+
     newsapi.v2.topHeadlines({
         sources: 'bbc-news,the-verge',
         q: 'COVID',
